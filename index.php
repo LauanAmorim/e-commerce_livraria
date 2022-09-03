@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-
   <title>Livraria Online</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,37 +33,50 @@
     box-shadow: inset 150px 0 0 0 #969696;
     color: white;
   }
+
+  #prodPreco {
+    color: green;
+  }
 </style>
 
 <body>
-  <?php include 'components/navbar.html' ?>
-  <?php include 'components/jumbotron.html' ?>
-  
+  <?php
+  include 'components/navbar.html';
+  include 'components/jumbotron.html'; 
+  include 'conexao.php';
+
+  //consulta
+  $consulta = $cn->query('select nm_livro, vl_preco, ds_capa, qt_estoque from vw_livro');
+
+  ?>  
   <div class="container-fluid">
     <div class="row">
+      <?php while($exibe = $consulta->fetch(PDO::FETCH_ASSOC)){ ?>
       <div class="col-sm-3">
-        <img src="https://placehold.co/450x320" class="img-responsive" style = "width: 100%">
-        <div><h3>Nome do Produto</h3></div>
-        <div><h4>R$500,00</h4></div>
+        <img src="imagens/<?php echo $exibe['ds_capa']; ?>.jpg" class="img-responsive" style = "width: 100%">
+        <div><h5><?php echo mb_strimwidth($exibe['nm_livro'], 0, 30,'...'); ?></h5></div>
+        <div id="prodPreco"><h5>R$ <?php echo number_format($exibe['vl_preco'], 2,',','.')?></h5></div>
+        <div class="text-center">
+          <?php if(($exibe['qt_estoque'] > 0)) { ?>
+          <button class="btn btn-outline-primary" type="submit"">
+            <span class="bi bi-info-circle"> Detalhes</span>
+          </button>
+          <button class="btn btn-outline-danger" type="submit"">
+            <span class="bi bi-currency-dollar"> Comprar</span>
+          </button>
+          <?php } else { ?>
+            <button class="btn btn-outline-primary" type="submit"">
+              <span class="bi bi-info-circle"> Detalhes</span>
+            </button>
+            <button class="btn btn-outline-danger" type="submit"" disabled>
+              <span class="bi bi-x-circle"> Indisponível</span>
+            </button>
+          <?php } ?>
+        </div>
+
+
       </div>
-      
-      <div class="col-sm-3">
-        <img src="https://placehold.co/450x320" class="img-responsive" style = "width: 100%">
-        <div><h3>Nome do Produto</h3></div>
-        <div><h4>R$500,00</h4></div>
-      </div>
-      
-      <div class="col-sm-3">
-        <img src="https://placehold.co/450x320" class="img-responsive" style = "width: 100%">
-        <div><h3>Nome do Produto</h3></div>
-        <div><h4>R$500,00</h4></div>
-      </div>
-      
-      <div class="col-sm-3">
-        <img src="https://placehold.co/450x320" class="img-responsive" style = "width: 100%">
-        <div><h3>Nome do Produto</h3></div>
-        <div><h4>R$500,00</h4></div>
-      </div>
+      <?php } ?>
     </div>
   </div>
 
