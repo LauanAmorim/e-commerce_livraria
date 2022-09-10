@@ -14,8 +14,8 @@
 
 </head>
 <style>
- /* .navbar{padding: 10px;} */
- .jumbotron{padding: 60px; background: lightgray; margin-bottom: 10px;}
+  /* .navbar{padding: 10px;} */
+  .jumbotron{padding: 60px; background: lightgray; margin-bottom: 10px;}
   .navbar-brand{font-weight: bolder; padding-top: 0px;}
   .d-flex .btn{
     height: 35px;
@@ -46,7 +46,7 @@
   include 'conexao.php';
 
   //consulta
-  $consulta = $cn->query('select nm_livro, vl_preco, ds_capa, qt_estoque from vw_livro');
+  $consulta = $cn->query("select nm_livro, vl_preco, ds_capa, qt_estoque from vw_livro where sg_lancamento = 'S'");
 
   ?>  
   <div class="container-fluid">
