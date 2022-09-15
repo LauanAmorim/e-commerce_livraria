@@ -41,9 +41,12 @@
 
 <body>
   <?php
-  include 'components/navbar.html';
-  include 'components/jumbotron.html'; 
+  session_start();
+
+
   include 'conexao.php';
+  include 'components/navbar.php';
+  include 'components/jumbotron.php'; 
 
   //consulta
   $consulta = $cn->query("select nm_livro, vl_preco, ds_capa, qt_estoque from vw_livro where sg_lancamento = 'S'");

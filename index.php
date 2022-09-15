@@ -41,9 +41,11 @@
 
 <body>
   <?php
-  include 'components/navbar.html';
-  include 'components/jumbotron.html'; 
+  session_start();
+  
   include 'conexao.php';
+  include 'components/navbar.php';
+  include 'components/jumbotron.php'; 
 
   //consulta
   $consulta = $cn->query('select nm_livro, vl_preco, ds_capa, qt_estoque from vw_livro');
@@ -54,7 +56,7 @@
       <?php while($exibe = $consulta->fetch(PDO::FETCH_ASSOC)){ ?>
       <div class="col-sm-3">
         <img src="imagens/<?php echo $exibe['ds_capa']; ?>.jpg" class="img-responsive" style = "width: 100%">
-        <div><h5><?php echo mb_strimwidth($exibe['nm_livro'], 0, 30,'...'); ?></h5></div>
+        <div><h5><?php echo mb_strimwidth($exibe['nm_livro'], 0, 25,'...'); ?></h5></div>
         <div id="prodPreco"><h5>R$ <?php echo number_format($exibe['vl_preco'], 2,',','.')?></h5></div>
         <div class="text-center">
           <?php if(($exibe['qt_estoque'] > 0)) { ?>

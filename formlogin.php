@@ -60,8 +60,8 @@
 <?php
 	
 	include 'conexao.php';
-	include 'components/navbar.html';
-  include 'components/jumbotron.html';
+	include 'components/navbar.php';
+  include 'components/jumbotron.php';
 ?>
 	
 	
@@ -102,6 +102,6 @@
 		</div>
 	</div>
 	
-	<?php include 'components/footer.html' ?>
+	<?php include 'components/footer.php' ?>
 </body>
 </html>
