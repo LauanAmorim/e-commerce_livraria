@@ -83,8 +83,9 @@
           </a>
         </li>
         <?php } else {
-          $consulta_usuario = $cn->query("select nm_usuario from tbl_usuario where cd_usuario = '$_SESSION[ID]'");
-          $exibe_usuario = $consulta_usuario->fetch(PDO::FETCH_ASSOC);
+          if($_SESSION['status'] == 0){
+            $consulta_usuario = $cn->query("select nm_usuario from tbl_usuario where cd_usuario = '$_SESSION[ID]'");
+            $exibe_usuario = $consulta_usuario->fetch(PDO::FETCH_ASSOC);
         ?>
         <li class="nav-item">
           <a class="nav-link" href="#">
@@ -96,7 +97,18 @@
             <span class="bi bi-door-open-fill">Logout</span>
           </a>
         </li>
-        <?php } ?>
+        <?php } else { ?>
+          <li class="nav-item">
+          <a class="nav-link" href="adm.php">
+            <button class="btn btn-sm btn-danger">Administrador</button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./sair.php">
+            <span class="bi bi-door-open-fill">Logout</span>
+          </a>
+        </li>
+        <?php } } ?>
       </ul>
     </div>
   </div>

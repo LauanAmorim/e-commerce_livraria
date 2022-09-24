@@ -10,7 +10,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <!-- Jquery -->
   <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
@@ -21,25 +20,22 @@
  /* .navbar{padding: 10px;} */
  .jumbotron{padding: 60px; background: lightgray; margin-bottom: 10px;}
   .navbar-brand{font-weight: bolder; padding-top: 0px;}
-  .d-flex .btn{
+	#btnentrar{
     height: 35px;
-    width: 150px;
+    width: 100%;
     border-radius: 6px;
     margin: 7px;
-    box-shadow: 2px 0px 12px rgba(0, 0, 0, 0.137);
+    box-shadow: 2px 0px 12px rgba(187, 221, 0, 0.137);
     cursor: pointer;
     box-shadow: inset 0 0 0 0 #969696;
     transition: ease-out 420ms;
     padding: 0px;
+		background-color: #9999cc;
   }
 
-  .d-flex .btn:hover{
-    box-shadow: inset 150px 0 0 0 #969696;
+  #btnentrar:hover{
+    box-shadow: inset 440px 0 0 0 #0D976F;
     color: white;
-  }
-
-  #prodPreco {
-    color: green;
   }
 
   .container-fluid .row {
@@ -86,17 +82,16 @@
 				</div>
 				
 							
-				<button type="submit" class="btn btn-lg btn-default">
+				<button type="submit" class="btn btn-lg btn-default" id="btnentrar">
 					
 					<span class="glyphicon glyphicon-ok"> Entrar</span>
 					
 				</button>
-				
-				<button type="submit" class="btn btn-lg btn-link">
-					
+				<a href="formusuario.php">
+				<button type="button" class="btn btn-lg btn-link">
 					Ainda não sou cadastrado
-					
 				</button>
+        </a>
         </form>
 			</div>
 		</div>
